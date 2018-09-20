@@ -2,7 +2,7 @@
     "name": "dsda/catcher",
     "type": "library",
     "description": "Catcher is Exception logger for PHP",
-    "keywords": ["framework", "error", "exception", "try\/catch"],
+    "keywords": ["framework", "error", "exception", "try", "catch"],
     "homepage": "http://dsda.ru/",
     "license": "CC-BY-4.0",
     "authors": [
