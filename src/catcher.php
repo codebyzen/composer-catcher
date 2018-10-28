@@ -27,8 +27,8 @@ class catcher {
 
 	function prepare_output($smth,$vardump=false,$backtrace=false){
 		ob_start();
-		echo "================== DEBUG MESSAGE ==================\n";
-		
+		echo "================== DEBUG MESSAGE ==================".PHP_EOL;
+		echo date("Y-m-d H:i:s", time()).PHP_EOL;
 		if (!$vardump) {
 			print_r($smth);
 		} else {
@@ -36,8 +36,8 @@ class catcher {
 		}
 	
 		if ($backtrace==true) {
-			echo "\n\n";
-			echo "================== BACKTRACE ==================\n";
+			echo PHP_EOL.PHP_EOL;
+			echo "================== BACKTRACE ==================".PHP_EOL;
 			print_r(debug_backtrace());
 		}
 		$log = ob_get_contents();
@@ -50,7 +50,12 @@ class catcher {
 			$backtrace=true;
 		}
 		$log = $this->prepare_output($smth,$vardump,$backtrace);
-		echo '<pre>'.$log.'</pre>';
+		if (php_sapi_name()!=='cli') {
+			echo '<pre>'.$log.'</pre>';
+		} else {
+			echo $log;
+		}
+		
 	}
 	
 	// Example: throw new Exception('Division by zero');
