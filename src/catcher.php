@@ -64,7 +64,8 @@ class catcher {
 			$backtrace=true;
 		}
 		$log = $this->prepare_output($smth,$vardump,$backtrace);
-		@file_put_contents($this->config->get('path').'/logs/catcher.txt', $log, FILE_APPEND);
+		if (!file_exists($this->config->get('app_data').'catcher')) mkdir($this->config->get('app_data').'/catcher');
+		@file_put_contents($this->config->get('app_data').'catcher/catcher.txt', $log, FILE_APPEND);
 	}
 
 }
